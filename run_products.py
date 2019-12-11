@@ -5,7 +5,8 @@ products_table = NWProducts()
 while True:
     print('Choose 1 for getting all products')
     print('Choose 2 for getting 1 product')
-    user_input = input('Choose 1 or 2: ').strip() # Removes trailing white spaces so it doesn't break
+    print('Choose exit to exit')
+    user_input = input('Choose 1, 2 or exit: ').strip() # Removes trailing white spaces so it doesn't break
 
     if user_input == '1':
         products_table.print_all()

@@ -32,10 +32,39 @@ class NWProducts(MSDBConnect):
             record = data.fetchone()
             if record is None:
                 break
-            print(record)
+            print(f"ID: {record.ProductID}, Name: {record.ProductName}, Price: £{record.UnitPrice}")
+
+# Prints top 10 products by price - formatted
+# Prints bottom 10 products per price - formatted
+# Search product by name
+
+    def print_top_10(self):
+        query = 'SELECT TOP 10 * FROM Products ORDER BY UnitPrice DESC'
+        data = self.__sql_query(query)
+        while True:
+            record = data.fetchone()
+            if record is None:
+                break
+            print(f"ID: {record.ProductID}, Name: {record.ProductName}, Price: £{record.UnitPrice}")
+
+    def print_bottom_10(self):
+        query = 'SELECT TOP 10 * FROM Products ORDER BY UnitPrice ASC'
+        data = self.__sql_query(query)
+        while True:
+            record = data.fetchone()
+            if record is None:
+                break
+            print(f"ID: {record.ProductID}, Name: {record.ProductName}, Price: £{record.UnitPrice}")
+        return 'All done!'
 
 # Variable for NW product table
 table_products = NWProducts()
+
+# product_top_10 = table_products.print_top_10()
+# print(product_top_10)
+
+product_bottom_10 = table_products.print_bottom_10()
+print(product_bottom_10)
 
 # Getting all products
 # products = table_products.read_all()
