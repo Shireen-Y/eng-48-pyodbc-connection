@@ -39,6 +39,11 @@ class NWEmployees(MSDBConnect):
             print(record)
         return 'All done!'
 
+    def create_employee(self):
+        new_first_name = input('What is your first name? ')
+        new_last_name = input('What is your last name? ')
+        query = f"INSERT INTO Employees ("
+
 table_employees = NWEmployees()
 # data_employees = table_employees.print_all()
 # print(data_employees)

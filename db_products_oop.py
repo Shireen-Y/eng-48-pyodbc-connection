@@ -35,9 +35,6 @@ class NWProducts(MSDBConnect):
             print(f"ID: {record.ProductID}, Name: {record.ProductName}, Price: £{record.UnitPrice}")
 
 # Prints top 10 products by price - formatted
-# Prints bottom 10 products per price - formatted
-# Search product by name
-
     def print_top_10(self):
         query = 'SELECT TOP 10 * FROM Products ORDER BY UnitPrice DESC'
         data = self.__sql_query(query)
@@ -48,6 +45,7 @@ class NWProducts(MSDBConnect):
             print(f"ID: {record.ProductID}, Name: {record.ProductName}, Price: £{record.UnitPrice}")
         return 'All done!'
 
+# Prints bottom 10 products per price - formatted
     def print_bottom_10(self):
         query = 'SELECT TOP 10 * FROM Products ORDER BY UnitPrice ASC'
         data = self.__sql_query(query)
@@ -58,6 +56,7 @@ class NWProducts(MSDBConnect):
             print(f"ID: {record.ProductID}, Name: {record.ProductName}, Price: £{record.UnitPrice}")
         return 'All done!'
 
+# Search product by name
     def product_name(self):
         name = input('What product do you want? ')
         query = f"SELECT * FROM Products WHERE ProductName LIKE '%{name}%'"
