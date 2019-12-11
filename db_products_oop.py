@@ -46,9 +46,21 @@ class NWProducts(MSDBConnect):
             if record is None:
                 break
             print(f"ID: {record.ProductID}, Name: {record.ProductName}, Price: £{record.UnitPrice}")
+        return 'All done!'
 
     def print_bottom_10(self):
         query = 'SELECT TOP 10 * FROM Products ORDER BY UnitPrice ASC'
+        data = self.__sql_query(query)
+        while True:
+            record = data.fetchone()
+            if record is None:
+                break
+            print(f"ID: {record.ProductID}, Name: {record.ProductName}, Price: £{record.UnitPrice}")
+        return 'All done!'
+
+    def product_name(self):
+        name = input('What product do you want? ')
+        query = f"SELECT * FROM Products WHERE ProductName LIKE '%{name}%'"
         data = self.__sql_query(query)
         while True:
             record = data.fetchone()
@@ -63,8 +75,11 @@ table_products = NWProducts()
 # product_top_10 = table_products.print_top_10()
 # print(product_top_10)
 
-product_bottom_10 = table_products.print_bottom_10()
-print(product_bottom_10)
+# product_bottom_10 = table_products.print_bottom_10()
+# print(product_bottom_10)
+
+# search_name = table_products.product_name()
+# print(search_name)
 
 # Getting all products
 # products = table_products.read_all()
