@@ -39,14 +39,19 @@ class NWEmployees(MSDBConnect):
             print(record)
         return 'All done!'
 
-    def create_employee(self):
-        new_first_name = input('What is your first name? ')
-        new_last_name = input('What is your last name? ')
-        query = f"INSERT INTO Employees ("
+    def create_employee(self, new_first_name, new_last_name):
+        # new_first_name = input('What is your first name? ')
+        # new_last_name = input('What is your last name? ')
+        query = f"INSERT INTO Employees (FirstName, LastName) VALUES ('{new_first_name}', '{new_last_name}')"
+        result = self.__sql_query(query)
+        self.docker_Northwind.commit()
+        return result
 
 table_employees = NWEmployees()
 # data_employees = table_employees.print_all()
 # print(data_employees)
+
+
 
 # employee = table_employees.read_one(id)
 # print(employee)

@@ -12,6 +12,7 @@ while True:
     print('Choose 4 for getting all employees')
     print('Choose 5 for information on 1 employee')
     print('Choose 6 for searching an employee')
+    print('Choose option 7 for adding an employee')
     print('Choose exit to exit')
     user_input = input('Choose an above option or exit: ').strip() # Removes trailing white spaces so it doesn't break
 
@@ -41,6 +42,13 @@ while True:
 
     elif user_input == '6':
         employees_table.employee_name()
+        time.sleep(0.7)
+
+    elif user_input == '7':
+        new_first_name = input('What is your first name? ')
+        new_last_name = input('What is your last name? ')
+        employees_table.create_employee(new_first_name, new_last_name)
+        print('New employee added')
         time.sleep(0.7)
 
     elif 'bye' in user_input or 'exit' in user_input:
